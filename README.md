@@ -18,4 +18,7 @@ value = {
     Variant::Value("Value at index 0"),
     Variant::Value(1)
 };
+
+// a value can be casted to a scalar, vector or map
+std::vector<Variant::Value> values = value;
 ```
