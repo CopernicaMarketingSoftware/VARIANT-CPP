@@ -36,7 +36,7 @@ public:
      */
     virtual ValueType type() override
     {
-        return ValueIntType;
+        return ValueNullType;
     }
 
     /**
