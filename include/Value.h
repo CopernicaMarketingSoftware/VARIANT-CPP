@@ -93,6 +93,11 @@ public:
     Value(const std::initializer_list<std::map<std::string, Value>::value_type>& value);
 
     /**
+     *  Get the type of value we are
+     */
+    ValueType type() const;
+
+    /**
      *  Assign another variant
      *  @param  value
      */

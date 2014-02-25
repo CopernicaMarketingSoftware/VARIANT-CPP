@@ -68,6 +68,14 @@ Value::Value(std::map<std::string, Value>&& value) : _impl(new ValueMap(std::mov
 Value::Value(const std::initializer_list<std::map<std::string, Value>::value_type>& value) : _impl(new ValueMap(value)) {}
 
 /**
+ *  Get the type of value we are
+ */
+ValueType Value::type() const
+{
+    return _impl->type();
+}
+
+/**
  *  Assign another value
  *  @param  value
  */
