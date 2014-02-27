@@ -74,7 +74,7 @@ If you encounter problems when compiling the software, you can make changes
 to src/Makefile. On top of this file the most important compile options
 are set and they can be easily changed.
 
-To use the library, simply add '#include <variant.h>' on top of your C++
+To use the library, simply add '#include \<variant.h\>' on top of your C++
 source file. Be aware that this is a C++11 library, so C++11 support should
 be enabled.
 
