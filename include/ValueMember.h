@@ -254,7 +254,7 @@ public:
      *  Array access operator
      *  @param  index
      */
-    ValueMember operator [] (int index)
+    ValueMember<int> operator [] (int index)
     {
         return ValueMember<int>(this, index);
     }
@@ -263,7 +263,7 @@ public:
      *  Array access operator
      *  @param  index
      */
-    ValueMember operator [] (const char* key)
+    ValueMember<std::string> operator [] (const char* key)
     {
         return ValueMember<std::string>(this, std::string{key});
     }
@@ -272,7 +272,7 @@ public:
      *  Array access operator
      *  @param  index
      */
-    ValueMember operator [] (const std::string& key)
+    ValueMember<std::string> operator [] (const std::string& key)
     {
         return ValueMember<std::string>(this, key);
     }
