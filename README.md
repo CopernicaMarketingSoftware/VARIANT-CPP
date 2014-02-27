@@ -2,8 +2,8 @@ VARIANT-CPP
 ===========
 
 The VARIANT-CPP library is a simply library that offers a Variant::Value class that 
-can be used to store variables of almost any type. This could be useful for C++
-programs that communicate with other technologies that are not strongly typed.
+can be used to store variables of almost any type. This is useful for C++
+programs that interact with technologies that are not strongly typed.
 
 Currently, the value objects can represent either an integer, a string, a vector 
 of variants or a string-indexed map of variants:
