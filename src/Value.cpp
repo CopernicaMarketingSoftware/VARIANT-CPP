@@ -171,6 +171,15 @@ Value::operator std::vector<Value> () const
 /**
  *  Assign a vector
  */
+Value& Value::operator=(const std::initializer_list<Value>& value)
+{
+    _impl = ValueImplPtr(new ValueVector(value));
+    return *this;
+}
+
+/**
+ *  Assign a vector
+ */
 Value& Value::operator=(const std::vector<Value>& value)
 {
     _impl = ValueImplPtr(new ValueVector(value));
@@ -214,6 +223,15 @@ ValueMember<int> Value::operator [] (int index)
 Value::operator std::map<std::string, Value> () const
 {
     return *_impl;
+}
+
+/**
+ *  Assign a map
+ */
+Value& Value::operator=(const std::initializer_list<std::map<std::string, Value>::value_type>& value)
+{
+    _impl = ValueImplPtr(new ValueMap(value));
+    return *this;
 }
 
 /**

@@ -130,6 +130,7 @@ public:
      *  Array casting, assignment and access
      */
     operator std::vector<Value> () const;
+    Value& operator=(const std::initializer_list<Value>& value);
     Value& operator=(const std::vector<Value>& value);
     Value& operator=(std::vector<Value>&& value);
     Value operator [] (int index) const;
@@ -139,6 +140,7 @@ public:
      *  Array casting, assignment and access
      */
     operator std::map<std::string, Value> () const;
+    Value& operator=(const std::initializer_list<std::map<std::string, Value>::value_type>& value);
     Value& operator=(const std::map<std::string, Value>& value);
     Value& operator=(std::map<std::string, Value>&& value);
     Value operator [] (const char* key) const;
