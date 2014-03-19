@@ -256,7 +256,7 @@ Value& Value::operator=(std::map<std::string, Value>&& value)
  *  Array access operator
  *  @param  key
  */
-Value Value::operator [] (const char* key) const
+const Value Value::operator [] (const char* key) const
 {
     return _impl->get(std::string{key});
 }
@@ -265,7 +265,7 @@ Value Value::operator [] (const char* key) const
  *  Array access operator
  *  @param  key
  */
-Value Value::operator [] (const std::string& key) const
+const Value Value::operator [] (const std::string& key) const
 {
     return _impl->get(key);
 }

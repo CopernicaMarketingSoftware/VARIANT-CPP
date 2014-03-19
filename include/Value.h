@@ -143,8 +143,8 @@ public:
     Value& operator=(const std::initializer_list<std::map<std::string, Value>::value_type>& value);
     Value& operator=(const std::map<std::string, Value>& value);
     Value& operator=(std::map<std::string, Value>&& value);
-    Value operator [] (const char* key) const;
-    Value operator [] (const std::string& key) const;
+    const Value operator [] (const char* key) const;
+    const Value operator [] (const std::string& key) const;
     ValueMember<std::string> operator [] (const char* key);
     ValueMember<std::string> operator [] (const std::string& key);
 };
