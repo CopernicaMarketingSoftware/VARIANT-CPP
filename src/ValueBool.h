@@ -1,7 +1,7 @@
 /**
- *  ValueInt.h
+ *  ValueBool.h
  *
- *  Value of numeric type
+ *  Value of boolean type
  *
  *  @copyright 2014 Copernica BV
  */
@@ -9,8 +9,8 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEINT_H
-#define __COPERNICA_VARIANT_VALUEINT_H
+#ifndef __COPERNICA_VARIANT_VALUEBOOL_H
+#define __COPERNICA_VARIANT_VALUEBOOL_H
 
 #include "../include/ValueImpl.h"
 
@@ -22,20 +22,20 @@ namespace Variant {
 /**
  *  Numeric value implementation
  */
-class ValueInt : public ValueImpl
+class ValueBool : public ValueImpl
 {
 private:
     /**
      *  Value of this value
      */
-    int _value;
+    bool _value;
 public:
     /**
      *  Get the implementation type
      */
     virtual ValueType type() override
     {
-        return ValueIntType;
+        return ValueBoolType;
     }
 
     /**
@@ -43,7 +43,7 @@ public:
      */
     virtual ValueImpl* clone() override
     {
-        return new ValueInt(_value);
+        return new ValueBool(_value);
     }
 
     /**
@@ -51,7 +51,7 @@ public:
      *
      *  @param  value
      */
-    ValueInt(int value) : _value(value) {}
+    ValueBool(bool value) : _value(value) {}
 
     /**
      *  Convert the value to a boolean
@@ -91,4 +91,4 @@ public:
  */
 }
 
-#endif /* ValueInt.h */
+#endif /* ValueBool.h */

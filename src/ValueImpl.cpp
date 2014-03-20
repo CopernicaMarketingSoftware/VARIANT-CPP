@@ -15,9 +15,25 @@
 namespace Variant {
 
 /**
+ *  Convert the value to a boolean
+ */
+ValueImpl::operator bool ()
+{
+    return false;
+}
+
+/**
  *  Convert the value to a number
  */
 ValueImpl::operator int ()
+{
+    return 0;
+}
+
+/**
+ *  Convert the value to a number
+ */
+ValueImpl::operator double ()
 {
     return 0;
 }

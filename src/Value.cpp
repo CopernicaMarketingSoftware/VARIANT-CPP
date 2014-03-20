@@ -9,7 +9,9 @@
 
 #include "../include/Value.h"
 #include "../include/ValueMember.h"
+#include "ValueBool.h"
 #include "ValueInt.h"
+#include "ValueDouble.h"
 #include "ValueString.h"
 #include "ValueNull.h"
 #include "ValueVector.h"
@@ -37,10 +39,16 @@ Value::Value() : _impl(new ValueNull()) {}
 Value::Value(std::nullptr_t value) : _impl(new ValueNull()) {}
 
 /**
+ *  Boolean constructor
+ */
+Value::Value(bool value) : _impl(new ValueBool(value)) {}
+
+/**
  *  Numeric constructor
  *  @param  value
  */
 Value::Value(int value) : _impl(new ValueInt(value)) {}
+Value::Value(double value) : _impl(new ValueDouble(value)) {}
 
 /**
  *  String constructor
@@ -98,9 +106,34 @@ Value& Value::operator=(Value&& value)
 }
 
 /**
+ *  Cast to a boolean
+ */
+Value::operator bool () const
+{
+    return *_impl;
+}
+
+/**
+ *  Assign a boolean
+ */
+Value& Value::operator=(bool value)
+{
+    _impl = ValueImplPtr(new ValueBool(value));
+    return *this;
+}
+
+/**
  *  Cast to a number
  */
 Value::operator int () const
+{
+    return *_impl;
+}
+
+/**
+ *  Cast to a number
+ */
+Value::operator double () const
 {
     return *_impl;
 }
@@ -111,6 +144,15 @@ Value::operator int () const
 Value& Value::operator=(int value)
 {
     _impl = ValueImplPtr(new ValueInt(value));
+    return *this;
+}
+
+/**
+ *  Assign a number
+ */
+Value& Value::operator=(double value)
+{
+    _impl = ValueImplPtr(new ValueDouble(value));
     return *this;
 }
 

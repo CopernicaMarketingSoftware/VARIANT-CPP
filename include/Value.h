@@ -62,10 +62,16 @@ public:
     Value(std::nullptr_t value);
 
     /**
+     *  Boolean constructor
+     */
+    Value(bool value);
+
+    /**
      *  Number constructor
      *  @param  value
      */
     Value(int value);
+    Value(double value);
 
     /**
      *  String constructor
@@ -105,10 +111,18 @@ public:
     Value& operator=(Value&& value);
 
     /**
+     *  Boolean casting and assignment
+     */
+    operator bool () const;
+    Value& operator=(bool value);
+
+    /**
      *  Number casting and assignment
      */
     operator int () const;
+    operator double () const;
     Value& operator=(int value);
+    Value& operator=(double value);
 
     /**
      *  String casting and assignment

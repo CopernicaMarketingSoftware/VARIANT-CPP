@@ -1,5 +1,5 @@
 /**
- *  ValueInt.h
+ *  ValueDouble.h
  *
  *  Value of numeric type
  *
@@ -9,8 +9,8 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEINT_H
-#define __COPERNICA_VARIANT_VALUEINT_H
+#ifndef __COPERNICA_VARIANT_VALUEDOUBLE_H
+#define __COPERNICA_VARIANT_VALUEDOUBLE_H
 
 #include "../include/ValueImpl.h"
 
@@ -22,20 +22,20 @@ namespace Variant {
 /**
  *  Numeric value implementation
  */
-class ValueInt : public ValueImpl
+class ValueDouble : public ValueImpl
 {
 private:
     /**
      *  Value of this value
      */
-    int _value;
+    double _value;
 public:
     /**
      *  Get the implementation type
      */
     virtual ValueType type() override
     {
-        return ValueIntType;
+        return ValueDoubleType;
     }
 
     /**
@@ -43,7 +43,7 @@ public:
      */
     virtual ValueImpl* clone() override
     {
-        return new ValueInt(_value);
+        return new ValueDouble(_value);
     }
 
     /**
@@ -51,15 +51,7 @@ public:
      *
      *  @param  value
      */
-    ValueInt(int value) : _value(value) {}
-
-    /**
-     *  Convert the value to a boolean
-     */
-    virtual operator bool () override
-    {
-        return _value;
-    }
+    ValueDouble(double value) : _value(value) {}
 
     /**
      *  Convert the value to a number

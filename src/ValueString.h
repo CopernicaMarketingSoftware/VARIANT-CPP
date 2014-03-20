@@ -13,7 +13,6 @@
 #define __COPERNICA_VARIANT_VALUESTRING_H
 
 #include "../include/ValueImpl.h"
-#include <cstdlib>
 
 /**
  *  Set up namespace
@@ -76,11 +75,28 @@ public:
     }
 
     /**
+     *  Convert the value to a boolean
+     */
+    virtual operator bool () override
+    {
+        // cast to a number and see whether this is false
+        return std::stoi(_value);
+    }
+
+    /**
      *  Convert the value to a number
      */
     virtual operator int () override
     {
-        return atoi(_value.c_str());
+        return std::stoi(_value);
+    }
+
+    /**
+     *  Convert the value to a number
+     */
+    virtual operator double () override
+    {
+        return std::stod(_value);
     }
 
     /**

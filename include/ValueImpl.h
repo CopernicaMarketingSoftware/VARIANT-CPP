@@ -27,7 +27,9 @@ namespace Variant {
  */
 typedef enum _ValueTypes {
     ValueNullType,
+    ValueBoolType,
     ValueIntType,
+    ValueDoubleType,
     ValueStringType,
     ValueVectorType,
     ValueMapType
@@ -55,9 +57,15 @@ public:
     virtual ValueImpl* clone() = 0;
 
     /**
+     *  Convert the value to a boolean
+     */
+    virtual operator bool ();
+
+    /**
      *  Convert the value to a number
      */
     virtual operator int ();
+    virtual operator double ();
 
     /**
      *  Convert the value to a string
