@@ -155,9 +155,25 @@ public:
     }
 
     /**
+     *  Cast to a boolean
+     */
+    operator bool () const
+    {
+        return _base->get(_index);
+    }
+
+    /**
      *  Cast to integer
      */
     operator int () const
+    {
+        return _base->get(_index);
+    }
+
+    /**
+     *  Cast to a double
+     */
+    operator double () const
     {
         return _base->get(_index);
     }

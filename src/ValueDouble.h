@@ -54,6 +54,14 @@ public:
     ValueDouble(double value) : _value(value) {}
 
     /**
+     *  Convert the value to a boolean
+     */
+    virtual operator bool () override
+    {
+        return _value;
+    }
+
+    /**
      *  Convert the value to a number
      */
     virtual operator int () override

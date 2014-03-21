@@ -80,7 +80,7 @@ public:
     virtual operator bool () override
     {
         // cast to a number and see whether this is false
-        return std::stoi(_value);
+        return std::stod(_value);
     }
 
     /**
