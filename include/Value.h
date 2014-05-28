@@ -99,6 +99,12 @@ public:
     Value(const std::initializer_list<std::map<std::string, Value>::value_type>& value);
 
     /**
+     *  Deserialize a json string into a Value
+     *  Returns a null Value in case of any errors
+     */
+    static Value fromJson(const std::string& json);
+
+    /**
      *  Get the type of value we are
      */
     ValueType type() const;

@@ -17,6 +17,8 @@
 #include "ValueVector.h"
 #include "ValueMap.h"
 
+#include <json-c/json.h>
+
 /**
  *  Namespace
  */
@@ -74,6 +76,62 @@ Value::Value(const std::initializer_list<Value>& value) : _impl(new ValueVector(
 Value::Value(const std::map<std::string, Value>& value) : _impl(new ValueMap(value)) {}
 Value::Value(std::map<std::string, Value>&& value) : _impl(new ValueMap(std::move(value))) {}
 Value::Value(const std::initializer_list<std::map<std::string, Value>::value_type>& value) : _impl(new ValueMap(value)) {}
+
+static Value jsonToValue(struct json_object *obj)
+{
+    // Switch through all the json_object types and return the according Value
+    switch (json_object_get_type(obj))
+    {
+        case json_type_null:    return nullptr;
+        case json_type_boolean: return json_object_get_boolean(obj) != 0;
+        case json_type_double:  return json_object_get_double(obj);
+        case json_type_int:     return json_object_get_int(obj);
+        case json_type_string:  return Value(json_object_get_string(obj), json_object_get_string_len(obj));
+        case json_type_array: {
+            // Get the length of the array and create a vector of that length
+            int len = json_object_array_length(obj);
+            std::vector<Value> output(len);
+
+            // Loop through the array and add every json_object to the vector using jsonToValue (recursive)
+            for (int i = 0; i < len; ++i) output[i] = jsonToValue(json_object_array_get_idx(obj, i));
+
+            // Return our output
+            return output;
+        }
+        case json_type_object: {
+            // Declare our output
+            std::map<std::string, Value> output;
+
+            // Loop through the object and add all json_objects to our map using jsonToValue (recursive)
+            json_object_object_foreach(obj, key, val)
+            {
+                output[key] = jsonToValue(val);
+            }
+
+            // Return our output
+            return output;
+        }
+    }
+}
+
+/**
+ *  Deserialize a json string into a Value
+ *  Returns a null Value in case of any errors
+ */
+Value Value::fromJson(const std::string& json)
+{
+    // Create our output and parse the json using json_tokener_parse(const char*)
+    struct json_object *parsed = json_tokener_parse(json.data());
+
+    // Turn the output into a Value object
+    Value output = jsonToValue(parsed);
+
+    // Decrement the reference count
+    json_object_put(parsed);
+
+    // Return the output
+    return output;
+}
 
 /**
  *  Get the type of value we are
