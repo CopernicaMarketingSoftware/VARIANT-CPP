@@ -144,6 +144,21 @@ public:
         _items[index] = std::move(value);
         return *this;
     }
+
+    /**
+     *  Turn the value into a json compatible type
+     */
+    virtual struct json_object *toJson() const override
+    {
+        // Create a json array
+        struct json_object *output = json_object_new_array();
+
+        // Loop through our items and append them to the json array
+        for (auto &item : _items) json_object_array_add(output, item.toJson());
+
+        // Return the json array
+        return output;
+    }
 };
 
 /**

@@ -84,6 +84,14 @@ public:
     {
         return std::to_string(_value);
     }
+
+    /**
+     *  Turn the value into a json compatible type
+     */
+    virtual struct json_object *toJson() const override
+    {
+        return json_object_new_double(_value);
+    }
 };
 
 /**

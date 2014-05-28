@@ -17,6 +17,8 @@
 #include <vector>
 #include <map>
 
+#include <json-c/json.h>
+
 /**
  *  Set up namespace
  */
@@ -130,6 +132,11 @@ public:
      */
     virtual ValueImpl& set(const std::string& key, const Value& value);
     virtual ValueImpl& set(const std::string& key, Value&& value);
+
+    /**
+     *  Turn the value into a json compatible type
+     */
+    virtual struct json_object *toJson() const = 0;
 };
 
 /**

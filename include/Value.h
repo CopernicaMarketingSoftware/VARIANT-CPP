@@ -141,6 +141,12 @@ public:
     size_t size() const;
 
     /**
+     *  Turn the value into a json compatible type
+     */
+    struct json_object *toJson() const;
+    std::string toJsonString() const;
+
+    /**
      *  Array casting, assignment and access
      */
     operator std::vector<Value> () const;

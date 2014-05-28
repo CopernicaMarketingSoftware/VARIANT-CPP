@@ -106,6 +106,14 @@ public:
     {
         return _value;
     }
+
+    /**
+     *  Turn the value into a json compatible type
+     */
+    virtual struct json_object *toJson() const override
+    {
+        return json_object_new_string_len(_value.data(), _value.size());
+    }
 };
 
 /**

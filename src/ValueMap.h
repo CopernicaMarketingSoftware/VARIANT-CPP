@@ -143,6 +143,21 @@ public:
         _items[key] = std::move(value);
         return *this;
     }
+
+    /**
+     *  Turn the value into a json compatible type
+     */
+    virtual struct json_object *toJson() const override
+    {
+        // Create a json object
+        struct json_object *output = json_object_new_object();
+
+        // Loop through our items and append them to the json object
+        for (auto &item : _items) json_object_object_add(output, item.first.data(), item.second.toJson());
+
+        // Return the json array
+        return output;
+    }
 };
 
 /**

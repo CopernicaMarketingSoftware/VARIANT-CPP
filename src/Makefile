@@ -1,8 +1,8 @@
-CPP             = g++
+CPP             = c++
 RM              = rm -f
 CPP_FLAGS       = -Wall -c -g -O2 -std=c++11
 LD              = g++
-LD_FLAGS        = -Wall -shared -O2
+LD_FLAGS        = -Wall -shared -O2 -ljson-c
 RESULT          = libvariant.so
 
 SOURCES		= $(wildcard *.cpp)

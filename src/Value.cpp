@@ -203,6 +203,32 @@ size_t Value::size() const
 }
 
 /**
+ *  Turn the value into a json compatible type
+ */
+struct json_object *Value::toJson() const
+{
+    return _impl->toJson();
+}
+
+/**
+ *  Turn the value into a json string
+ */
+std::string Value::toJsonString() const
+{
+    // Turn our value implementation into a json_object
+    struct json_object *json = toJson();
+
+    // Turn this json_object into a string
+    std::string output(json_object_to_json_string(json));
+
+    // Decrement the reference count
+    json_object_put(json);
+
+    // Return this string
+    return output;
+}
+
+/**
  *  Cast to an array
  */
 Value::operator std::vector<Value> () const
