@@ -82,6 +82,7 @@ static Value jsonToValue(struct json_object *obj)
     // Switch through all the json_object types and return the according Value
     switch (json_object_get_type(obj))
     {
+        default:
         case json_type_null:    return nullptr;
         case json_type_boolean: return json_object_get_boolean(obj) != 0;
         case json_type_double:  return json_object_get_double(obj);
