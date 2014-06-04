@@ -61,7 +61,7 @@ public:
     /**
      *  Get the implementation type
      */
-    virtual ValueType type() override
+    virtual ValueType type() const override
     {
         return ValueStringType;
     }
@@ -69,7 +69,7 @@ public:
     /**
      *  Clone the implementation
      */
-    virtual ValueImpl* clone() override
+    virtual ValueImpl* clone() const override
     {
         return new ValueString(_value);
     }
@@ -77,7 +77,7 @@ public:
     /**
      *  Convert the value to a boolean
      */
-    virtual operator bool () override
+    virtual operator bool () const override
     {
         // cast to a number and see whether this is false
         return std::stod(_value);
@@ -86,7 +86,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator int () override
+    virtual operator int () const override
     {
         return std::stoi(_value);
     }
@@ -94,7 +94,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator double () override
+    virtual operator double () const override
     {
         return std::stod(_value);
     }
@@ -102,7 +102,7 @@ public:
     /**
      *  Convert the value to a string
      */
-    virtual operator std::string () override
+    virtual operator std::string () const override
     {
         return _value;
     }
@@ -113,6 +113,21 @@ public:
     virtual struct json_object *toJson() const override
     {
         return json_object_new_string_len(_value.data(), _value.size());
+    }
+
+    /**
+     *  Comparison operator
+     */
+    virtual bool operator==(const ValueImpl &that) const override
+    {
+        // Start off with checking if we are the same type
+        if (that.type() != ValueStringType) return false;
+
+        // Cast that to a std::string
+        std::string s = that;
+
+        // Compare the two strings
+        return _value == s;
     }
 };
 

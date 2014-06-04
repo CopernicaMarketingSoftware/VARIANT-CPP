@@ -46,7 +46,7 @@ private:
      *  This is only applicable for array values,
      *  so it returns a null value by default.
      */
-    virtual Value get(size_t index)
+    virtual Value get(size_t index) const
     {
         return _base->get(_index)[index];
     }
@@ -91,7 +91,7 @@ private:
      *  This is only applicable for mapvalues
      *  so it returns a null value by default.
      */
-    virtual Value get(const std::string& key)
+    virtual Value get(const std::string& key) const
     {
         return _base->get(_index)[key];
     }
@@ -270,7 +270,7 @@ public:
      *  Array access operator
      *  @param  index
      */
-    ValueMember<int> operator [] (int index)
+    ValueMember<int> operator [] (int index) const
     {
         return ValueMember<int>(this, index);
     }
@@ -279,7 +279,7 @@ public:
      *  Array access operator
      *  @param  index
      */
-    ValueMember<std::string> operator [] (const char* key)
+    ValueMember<std::string> operator [] (const char* key) const
     {
         return ValueMember<std::string>(this, std::string{key});
     }
@@ -288,7 +288,7 @@ public:
      *  Array access operator
      *  @param  index
      */
-    ValueMember<std::string> operator [] (const std::string& key)
+    ValueMember<std::string> operator [] (const std::string& key) const
     {
         return ValueMember<std::string>(this, key);
     }

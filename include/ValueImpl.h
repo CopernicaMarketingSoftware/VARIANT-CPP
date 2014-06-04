@@ -51,28 +51,28 @@ public:
     /**
      *  Get the implementation type
      */
-    virtual ValueType type() = 0;
+    virtual ValueType type() const = 0;
 
     /**
      *  Clone the implementation
      */
-    virtual ValueImpl* clone() = 0;
+    virtual ValueImpl* clone() const = 0;
 
     /**
      *  Convert the value to a boolean
      */
-    virtual operator bool ();
+    virtual operator bool () const;
 
     /**
      *  Convert the value to a number
      */
-    virtual operator int ();
-    virtual operator double ();
+    virtual operator int () const;
+    virtual operator double () const;
 
     /**
      *  Convert the value to a string
      */
-    virtual operator std::string ();
+    virtual operator std::string () const;
 
     /**
      *  Convert the value to a vector
@@ -105,7 +105,7 @@ public:
      *  This is only applicable for array value,
      *  so it returns a null value by default.
      */
-    virtual Value get(size_t index);
+    virtual Value get(size_t index) const;
 
     /**
      *  Set value at the given offset
@@ -122,7 +122,7 @@ public:
      *  This is only applicable for map values
      *  so it returns a null value by default.
      */
-    virtual Value get(const std::string& key);
+    virtual Value get(const std::string& key) const;
 
     /**
      *  Set value at the given key
@@ -137,6 +137,11 @@ public:
      *  Turn the value into a json compatible type
      */
     virtual struct json_object *toJson() const = 0;
+
+    /**
+     *  Comparison operator
+     */
+    virtual bool operator==(const ValueImpl &that) const = 0;
 };
 
 /**

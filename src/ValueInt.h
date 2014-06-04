@@ -33,7 +33,7 @@ public:
     /**
      *  Get the implementation type
      */
-    virtual ValueType type() override
+    virtual ValueType type() const override
     {
         return ValueIntType;
     }
@@ -41,7 +41,7 @@ public:
     /**
      *  Clone the implementation
      */
-    virtual ValueImpl* clone() override
+    virtual ValueImpl* clone() const override
     {
         return new ValueInt(_value);
     }
@@ -56,7 +56,7 @@ public:
     /**
      *  Convert the value to a boolean
      */
-    virtual operator bool () override
+    virtual operator bool () const override
     {
         return _value;
     }
@@ -64,7 +64,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator int () override
+    virtual operator int () const override
     {
         return _value;
     }
@@ -72,7 +72,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator double() override
+    virtual operator double() const override
     {
         return _value;
     }
@@ -80,7 +80,7 @@ public:
     /**
      *  Convert the value to a string
      */
-    virtual operator std::string () override
+    virtual operator std::string () const override
     {
         return std::to_string(_value);
     }
@@ -91,6 +91,21 @@ public:
     virtual struct json_object *toJson() const override
     {
         return json_object_new_int(_value);
+    }
+
+    /**
+     *  Comparison operator
+     */
+    virtual bool operator==(const ValueImpl &that) const override
+    {
+        // Start off with checking if we are the same type
+        if (that.type() != ValueIntType) return false;
+
+        // Cast that to an int
+        int i = that;
+
+        // Compare the two integers
+        return _value == i;
     }
 };
 

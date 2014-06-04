@@ -173,6 +173,12 @@ public:
     const Value operator [] (const std::string& key) const;
     ValueMember<std::string> operator [] (const char* key);
     ValueMember<std::string> operator [] (const std::string& key);
+
+    /**
+     *  Equals and not equals to operators
+     */
+    bool operator==(const Value &that) const;
+    bool operator!=(const Value &that) const { return !(*this == that); }
 };
 
 /**

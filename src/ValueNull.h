@@ -34,7 +34,7 @@ public:
     /**
      *  Get the implementation type
      */
-    virtual ValueType type() override
+    virtual ValueType type() const override
     {
         return ValueNullType;
     }
@@ -42,7 +42,7 @@ public:
     /**
      *  Clone the implementation
      */
-    virtual ValueImpl* clone() override
+    virtual ValueImpl* clone() const override
     {
         return new ValueNull();
     }
@@ -53,6 +53,15 @@ public:
     virtual struct json_object *toJson() const override
     {
         return nullptr;
+    }
+
+    /**
+     *  Comparison operator
+     */
+    virtual bool operator==(const ValueImpl &that) const override
+    {
+        // Simply check if the type of that is null
+        return that.type() == ValueNullType;
     }
 };
 

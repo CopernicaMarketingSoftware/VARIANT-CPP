@@ -66,7 +66,7 @@ public:
     /**
      *  Get the implementation type
      */
-    virtual ValueType type() override
+    virtual ValueType type() const override
     {
         return ValueVectorType;
     }
@@ -74,7 +74,7 @@ public:
     /**
      *  Clone the implementation
      */
-    virtual ValueImpl* clone() override
+    virtual ValueImpl* clone() const override
     {
         return new ValueVector(_items);
     }
@@ -104,7 +104,7 @@ public:
      *  If no value exists at the given offset, a
      *  null value will be returned instead.
      */
-    virtual Value get(size_t index) override
+    virtual Value get(size_t index) const override
     {
         // check for a valid index and return the value
         if (index < size()) return _items[index];
@@ -158,6 +158,33 @@ public:
 
         // Return the json array
         return output;
+    }
+
+    /**
+     *  Comparison operator
+     */
+    virtual bool operator==(const ValueImpl &that) const override
+    {
+        // Start off with checking if we are the same type
+        if (that.type() != ValueVectorType) return false;
+
+        // Check if we're the same size
+        if (that.size() != size()) return false;
+
+        // Cast that to a std::vector
+        std::vector<Value> v = that;
+
+        // Store the length of the vector
+        std::vector<Value>::size_type len = v.size();
+
+        // Loop through the vector, as soon as we see something that is different we return false
+        for (std::vector<Value>::size_type i = 0; i < len; ++i)
+        {
+            if (v[i] != _items[i]) return false;
+        }
+
+        // If we made it here we know that we are the same
+        return true;
     }
 };
 

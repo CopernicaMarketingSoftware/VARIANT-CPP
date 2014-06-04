@@ -66,7 +66,7 @@ public:
     /**
      *  Get the implementation type
      */
-    virtual ValueType type() override
+    virtual ValueType type() const override
     {
         return ValueMapType;
     }
@@ -74,7 +74,7 @@ public:
     /**
      *  Clone the implementation
      */
-    virtual ValueImpl* clone() override
+    virtual ValueImpl* clone() const override
     {
         return new ValueMap(_items);
     }
@@ -104,14 +104,14 @@ public:
      *  If no value exists at the given offset, a
      *  null value will be returned instead.
      */
-    virtual Value get(const std::string& key) override
+    virtual Value get(const std::string& key) const override
     {
         try
         {
             // if the element exists, return it
             return _items.at(key);
         }
-        catch (const std::out_of_range& e)
+        catch (...)
         {
             // element does not exist, return null instead
             return nullptr;
@@ -157,6 +157,37 @@ public:
 
         // Return the json array
         return output;
+    }
+
+    /**
+     *  Comparison operator
+     */
+    virtual bool operator==(const ValueImpl &that) const override
+    {
+        // Start off with checking if we are the same type
+        if (that.type() != ValueMapType) return false;
+
+        // Check if we're the same size
+        if (that.size() != size()) return false;
+
+        // Cast that to a std::map
+        std::map<std::string, Value> m = that;
+
+        // Loop through the map and look everything up in the other map
+        for (const auto &member : m)
+        {
+            // Look for an item with the current key in the other map
+            const auto &iter = _items.find(member.first);
+
+            // If we didn't find it then we are obviously not equal
+            if (iter == _items.end()) return false;
+
+            // If our items aren't equal, neither are we
+            if (iter->second != member.second) return false;
+        }
+
+        // If we made it here we know that we are the same
+        return true;
     }
 };
 

@@ -17,7 +17,7 @@ namespace Variant {
 /**
  *  Convert the value to a boolean
  */
-ValueImpl::operator bool ()
+ValueImpl::operator bool () const
 {
     return false;
 }
@@ -25,7 +25,7 @@ ValueImpl::operator bool ()
 /**
  *  Convert the value to a number
  */
-ValueImpl::operator int ()
+ValueImpl::operator int () const
 {
     return 0;
 }
@@ -33,7 +33,7 @@ ValueImpl::operator int ()
 /**
  *  Convert the value to a number
  */
-ValueImpl::operator double ()
+ValueImpl::operator double () const
 {
     return 0;
 }
@@ -41,7 +41,7 @@ ValueImpl::operator double ()
 /**
  *  Convert the value to a string
  */
-ValueImpl::operator std::string ()
+ValueImpl::operator std::string () const
 {
     return "";
 }
@@ -86,7 +86,7 @@ size_t ValueImpl::size() const
  *  This is only applicable for array values,
  *  so it returns a null value by default.
  */
-Value ValueImpl::get(size_t index)
+Value ValueImpl::get(size_t index) const
 {
     return nullptr;
 }
@@ -119,7 +119,7 @@ ValueImpl& ValueImpl::set(size_t index, Value&& value)
  *  This is only applicable for map values
  *  so it returns a null value by default.
  */
-Value ValueImpl::get(const std::string& key)
+Value ValueImpl::get(const std::string& key) const
 {
     return nullptr;
 }

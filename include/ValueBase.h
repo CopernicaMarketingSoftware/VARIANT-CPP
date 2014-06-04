@@ -30,7 +30,7 @@ public:
      *  This is only applicable for array values,
      *  so it returns a null value by default.
      */
-    virtual Value get(size_t index) = 0;
+    virtual Value get(size_t index) const = 0;
 
     /**
      *  Set value at the given offset
@@ -47,7 +47,7 @@ public:
      *  This is only applicable for map values
      *  so it returns a null value by default.
      */
-    virtual Value get(const std::string& key) = 0;
+    virtual Value get(const std::string& key) const = 0;
 
     /**
      *  Set value at the given key

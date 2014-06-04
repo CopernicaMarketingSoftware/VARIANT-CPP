@@ -423,6 +423,13 @@ ValueMember<std::string> Value::operator [] (const std::string& key)
     return ValueMember<std::string>(_impl.get(), key);
 }
 
+bool Value::operator==(const Value &that) const
+{
+    if (type() == that.type()) return *_impl == *that._impl;
+
+    return false;
+}
+
 /**
  *  End namespace
  */
