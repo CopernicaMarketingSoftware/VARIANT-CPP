@@ -292,6 +292,12 @@ public:
     {
         return ValueMember<std::string>(this, key);
     }
+
+    /**
+     *  Equals and not equals to operators
+     */
+    bool operator==(const ValueMember &that) const { return value() == that.value(); }
+    bool operator!=(const ValueMember &that) const { return value() != that.value(); }
 };
 
 /**
