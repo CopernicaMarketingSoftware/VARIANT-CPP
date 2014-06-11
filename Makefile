@@ -1,6 +1,6 @@
 PREFIX			=	/usr
-INCLUDE_DIR		=	${PREFIX}/include/
-LIBRARY_DIR		=	${PREFIX}/lib/
+INCLUDE_DIR		=	${PREFIX}/include
+LIBRARY_DIR		=	${PREFIX}/lib
 
 all:
 		$(MAKE) -C src all

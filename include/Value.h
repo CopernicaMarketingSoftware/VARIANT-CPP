@@ -71,6 +71,7 @@ public:
      *  @param  value
      */
     Value(int value);
+    Value(long value);
     Value(double value);
 
     /**
@@ -126,8 +127,10 @@ public:
      *  Number casting and assignment
      */
     operator int () const;
+    operator long () const;
     operator double () const;
     Value& operator=(int value);
+    Value& operator=(long value);
     Value& operator=(double value);
 
     /**

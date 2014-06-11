@@ -1,5 +1,5 @@
 /**
- *  ValueInt.h
+ *  ValueLong.h
  *
  *  Value of numeric type
  *
@@ -9,8 +9,8 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEINT_H
-#define __COPERNICA_VARIANT_VALUEINT_H
+#ifndef __COPERNICA_VARIANT_VALUELONG_H
+#define __COPERNICA_VARIANT_VALUELONG_H
 
 #include "../include/ValueImpl.h"
 
@@ -22,20 +22,20 @@ namespace Variant {
 /**
  *  Numeric value implementation
  */
-class ValueInt : public ValueImpl
+class ValueLong : public ValueImpl
 {
 private:
     /**
      *  Value of this value
      */
-    int _value;
+    long _value;
 public:
     /**
      *  Get the implementation type
      */
     virtual ValueType type() const override
     {
-        return ValueIntType;
+        return ValueLongType;
     }
 
     /**
@@ -43,15 +43,16 @@ public:
      */
     virtual ValueImpl* clone() const override
     {
-        return new ValueInt(_value);
+        return new ValueLong(_value);
     }
 
     /**
-     *  Construct new integer value
+     *  Construct new long value
      *
      *  @param  value
      */
-    ValueInt(int value) : _value(value) {}
+    ValueLong(int value) : ValueLong((long) value) {}
+    ValueLong(long value) : _value(value) {}
 
     /**
      *  Convert the value to a boolean
@@ -107,12 +108,12 @@ public:
     virtual bool operator==(const ValueImpl &that) const override
     {
         // Start off with checking if we are the same type
-        if (that.type() != ValueIntType) return false;
+        if (that.type() != ValueLongType) return false;
 
-        // Cast that to an int
-        int i = that;
+        // Cast that to a long
+        long i = that;
 
-        // Compare the two integers
+        // Compare the two longs
         return _value == i;
     }
 };
@@ -122,4 +123,4 @@ public:
  */
 }
 
-#endif /* ValueInt.h */
+#endif /* ValueLong.h */

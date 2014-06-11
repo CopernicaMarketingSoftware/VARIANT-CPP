@@ -11,6 +11,7 @@
 #include "../include/ValueMember.h"
 #include "ValueBool.h"
 #include "ValueInt.h"
+#include "ValueLong.h"
 #include "ValueDouble.h"
 #include "ValueString.h"
 #include "ValueNull.h"
@@ -50,6 +51,7 @@ Value::Value(bool value) : _impl(new ValueBool(value)) {}
  *  @param  value
  */
 Value::Value(int value) : _impl(new ValueInt(value)) {}
+Value::Value(long value) : _impl(new ValueLong(value)) {}
 Value::Value(double value) : _impl(new ValueDouble(value)) {}
 
 /**
@@ -192,6 +194,14 @@ Value::operator int () const
 /**
  *  Cast to a number
  */
+Value::operator long () const
+{
+    return *_impl;
+}
+
+/**
+ *  Cast to a number
+ */
 Value::operator double () const
 {
     return *_impl;
@@ -203,6 +213,15 @@ Value::operator double () const
 Value& Value::operator=(int value)
 {
     _impl = ValueImplPtr(new ValueInt(value));
+    return *this;
+}
+
+/**
+ *  Assign a number
+ */
+Value& Value::operator=(long value)
+{
+    _impl = ValueImplPtr(new ValueLong(value));
     return *this;
 }
 

@@ -31,6 +31,7 @@ typedef enum _ValueTypes {
     ValueNullType,
     ValueBoolType,
     ValueIntType,
+    ValueLongType,
     ValueDoubleType,
     ValueStringType,
     ValueVectorType,
@@ -67,6 +68,7 @@ public:
      *  Convert the value to a number
      */
     virtual operator int () const;
+    virtual operator long () const;
     virtual operator double () const;
 
     /**

@@ -30,6 +30,11 @@ ValueImpl::operator int () const
     return 0;
 }
 
+ValueImpl::operator long () const
+{
+    return 0;
+}
+
 /**
  *  Convert the value to a number
  */
