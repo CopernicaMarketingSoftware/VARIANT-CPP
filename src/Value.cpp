@@ -93,10 +93,11 @@ static Value jsonToValue(struct json_object *obj)
         case json_type_array: {
             // Get the length of the array and create a vector of that length
             int len = json_object_array_length(obj);
-            std::vector<Value> output(len);
+            std::vector<Value> output;
+            output.reserve(len);
 
             // Loop through the array and add every json_object to the vector using jsonToValue (recursive)
-            for (int i = 0; i < len; ++i) output[i] = jsonToValue(json_object_array_get_idx(obj, i));
+            for (int i = 0; i < len; ++i) output.push_back(jsonToValue(json_object_array_get_idx(obj, i)));
 
             // Return our output
             return output;
