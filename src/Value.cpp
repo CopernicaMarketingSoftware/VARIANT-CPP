@@ -51,7 +51,7 @@ Value::Value(bool value) : _impl(new ValueBool(value)) {}
  *  @param  value
  */
 Value::Value(int value) : _impl(new ValueInt(value)) {}
-Value::Value(long value) : _impl(new ValueLong(value)) {}
+Value::Value(int64_t value) : _impl(new ValueLong(value)) {}
 Value::Value(double value) : _impl(new ValueDouble(value)) {}
 
 /**
@@ -195,7 +195,7 @@ Value::operator int () const
 /**
  *  Cast to a number
  */
-Value::operator long () const
+Value::operator int64_t () const
 {
     return *_impl;
 }
@@ -220,7 +220,7 @@ Value& Value::operator=(int value)
 /**
  *  Assign a number
  */
-Value& Value::operator=(long value)
+Value& Value::operator=(int64_t value)
 {
     _impl = ValueImplPtr(new ValueLong(value));
     return *this;

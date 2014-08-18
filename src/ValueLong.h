@@ -28,7 +28,7 @@ private:
     /**
      *  Value of this value
      */
-    long _value;
+    int64_t _value;
 public:
     /**
      *  Get the implementation type
@@ -51,8 +51,8 @@ public:
      *
      *  @param  value
      */
-    ValueLong(int value) : ValueLong((long) value) {}
-    ValueLong(long value) : _value(value) {}
+    ValueLong(int value) : ValueLong((int64_t) value) {}
+    ValueLong(int64_t value) : _value(value) {}
 
     /**
      *  Convert the value to a boolean
@@ -73,7 +73,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator long () const override
+    virtual operator int64_t () const override
     {
         return _value;
     }
@@ -110,8 +110,8 @@ public:
         // Start off with checking if we are the same type
         if (that.type() != ValueLongType) return false;
 
-        // Cast that to a long
-        long i = that;
+        // Cast that to a int64_t
+        int64_t i = that;
 
         // Compare the two longs
         return _value == i;

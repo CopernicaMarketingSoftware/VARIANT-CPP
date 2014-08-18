@@ -72,7 +72,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator long () const override
+    virtual operator int64_t () const override
     {
         return _value;
     }

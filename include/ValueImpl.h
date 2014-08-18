@@ -68,7 +68,7 @@ public:
      *  Convert the value to a number
      */
     virtual operator int () const;
-    virtual operator long () const;
+    virtual operator int64_t () const;
     virtual operator double () const;
 
     /**

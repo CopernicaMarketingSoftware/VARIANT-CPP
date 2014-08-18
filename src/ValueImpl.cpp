@@ -30,7 +30,7 @@ ValueImpl::operator int () const
     return 0;
 }
 
-ValueImpl::operator long () const
+ValueImpl::operator int64_t () const
 {
     return 0;
 }
