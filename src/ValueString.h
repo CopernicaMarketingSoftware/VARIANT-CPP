@@ -88,7 +88,29 @@ public:
      */
     virtual operator int () const override
     {
-        return std::stoi(_value);
+        try
+        {
+            return std::stoi(_value);
+        }
+        catch (...)
+        {
+            return 0;
+        }
+    }
+
+    /**
+     *  Convert the value to a number
+     */
+    virtual operator int64_t () const override
+    {
+        try
+        {
+            return std::stoll(_value);
+        }
+        catch (...)
+        {
+            return 0;
+        }
     }
 
     /**
@@ -96,7 +118,14 @@ public:
      */
     virtual operator double () const override
     {
-        return std::stod(_value);
+        try
+        {
+            return std::stod(_value);
+        }
+        catch (...)
+        {
+            return 0.0;
+        }
     }
 
     /**
