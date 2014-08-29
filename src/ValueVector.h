@@ -10,8 +10,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEVECTOR_H
-#define __COPERNICA_VARIANT_VALUEVECTOR_H
+#pragma once
 
 #include "../include/ValueImpl.h"
 #include "../include/Value.h"
@@ -192,5 +191,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueVector.h */

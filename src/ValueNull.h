@@ -9,8 +9,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUENULL_H
-#define __COPERNICA_VARIANT_VALUENULL_H
+#pragma once
 
 #include "../include/ValueImpl.h"
 
@@ -68,5 +67,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueNull.h */

@@ -10,8 +10,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEMAP_H
-#define __COPERNICA_VARIANT_VALUEMAP_H
+#pragma once
 
 #include "../include/ValueImpl.h"
 #include "../include/Value.h"
@@ -195,5 +194,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueMap.h */

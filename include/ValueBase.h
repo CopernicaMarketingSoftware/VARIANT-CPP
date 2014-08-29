@@ -4,9 +4,10 @@
  *  @copyright 2014 Copernica BV
  */
 
-// include guard
-#ifndef __COPERNICA_VARIANT_VALUEBASE_H
-#define __COPERNICA_VARIANT_VALUEBASE_H
+/**
+ *  Include guard
+ */
+#pragma once
 
 #include <string>
 
@@ -63,5 +64,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueBase.h */

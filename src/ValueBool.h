@@ -9,8 +9,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEBOOL_H
-#define __COPERNICA_VARIANT_VALUEBOOL_H
+#pragma once
 
 #include "../include/ValueImpl.h"
 
@@ -121,5 +120,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueBool.h */

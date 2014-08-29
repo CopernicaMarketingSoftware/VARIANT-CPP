@@ -9,8 +9,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUELONG_H
-#define __COPERNICA_VARIANT_VALUELONG_H
+#pragma once
 
 #include "../include/ValueImpl.h"
 
@@ -122,5 +121,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueLong.h */

@@ -9,8 +9,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEIMPL_H
-#define __COPERNICA_VARIANT_VALUEIMPL_H
+#pragma once
 
 #include "ValueBase.h"
 #include <memory>
@@ -150,5 +149,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueImpl.h */

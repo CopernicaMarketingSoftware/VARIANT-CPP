@@ -10,8 +10,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUE_H
-#define __COPERNICA_VARIANT_VALUE_H
+#pragma once
 
 #include "ValueImpl.h"
 #include <string>
@@ -188,5 +187,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* Value.h */

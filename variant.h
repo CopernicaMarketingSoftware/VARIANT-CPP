@@ -9,8 +9,13 @@
  *  compiled in).
  *
  *  @copyright 2014 Copernica BV
- *  @author Martinj Otto <martijn.otto@copernica.com>
+ *  @author Martijn Otto <martijn.otto@copernica.com>
  */
+
+/**
+ *  Include guard
+ */
+#pragma once
 
 /**
  *  Include relevant header files

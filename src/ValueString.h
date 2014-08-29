@@ -9,8 +9,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUESTRING_H
-#define __COPERNICA_VARIANT_VALUESTRING_H
+#pragma once
 
 #include "../include/ValueImpl.h"
 
@@ -164,5 +163,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueString.h */

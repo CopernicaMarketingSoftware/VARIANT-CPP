@@ -10,8 +10,7 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEMEMBER_H
-#define __COPERNICA_VARIANT_VALUEMEMBER_H
+#pragma once
 
 #include "ValueImpl.h"
 
@@ -312,5 +311,3 @@ public:
  *  End namespace
  */
 }
-
-#endif /* ValueMember.h */
