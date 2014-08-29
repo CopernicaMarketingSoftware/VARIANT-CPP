@@ -63,7 +63,9 @@ INSTALLATION
 
 After you've downloaded the source code, you should compile and install the
 library by running the following two commands. This works on all regular
-Linux platforms.
+Linux platforms. VARIANT-CPP depends on the json-c library so make sure you have
+installed this library and the header files of it installed before you try to
+install this library.
 
 ````sh
 make
