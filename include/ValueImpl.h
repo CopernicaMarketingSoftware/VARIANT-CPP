@@ -30,8 +30,8 @@ namespace Variant {
 typedef enum _ValueTypes {
     ValueNullType,
     ValueBoolType,
-    ValueIntType,
-    ValueLongType,
+    ValueInt32Type,
+    ValueInt64Type,
     ValueDoubleType,
     ValueStringType,
     ValueVectorType,
@@ -67,7 +67,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator int () const;
+    virtual operator int32_t () const;
     virtual operator int64_t () const;
     virtual operator double () const;
 

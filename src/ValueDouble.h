@@ -64,7 +64,15 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator int () const override
+    virtual operator int32_t () const override
+    {
+        return _value;
+    }
+
+    /**
+     *  Convert the value to a number
+     */
+    virtual operator int64_t () const override
     {
         return _value;
     }

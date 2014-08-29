@@ -165,7 +165,15 @@ public:
     /**
      *  Cast to integer
      */
-    operator int () const
+    operator int32_t () const
+    {
+        return _base->get(_index);
+    }
+
+    /**
+     *  Cast to integer
+     */
+    operator int64_t () const
     {
         return _base->get(_index);
     }

@@ -25,11 +25,14 @@ ValueImpl::operator bool () const
 /**
  *  Convert the value to a number
  */
-ValueImpl::operator int () const
+ValueImpl::operator int32_t () const
 {
     return 0;
 }
 
+/**
+ *  Convert the value to a number
+ */
 ValueImpl::operator int64_t () const
 {
     return 0;

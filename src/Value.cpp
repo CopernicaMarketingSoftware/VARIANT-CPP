@@ -10,8 +10,8 @@
 #include "../include/Value.h"
 #include "../include/ValueMember.h"
 #include "ValueBool.h"
-#include "ValueInt.h"
-#include "ValueLong.h"
+#include "ValueInt32.h"
+#include "ValueInt64.h"
 #include "ValueDouble.h"
 #include "ValueString.h"
 #include "ValueNull.h"
@@ -50,8 +50,8 @@ Value::Value(bool value) : _impl(new ValueBool(value)) {}
  *  Numeric constructor
  *  @param  value
  */
-Value::Value(int value) : _impl(new ValueInt(value)) {}
-Value::Value(int64_t value) : _impl(new ValueLong(value)) {}
+Value::Value(int32_t value) : _impl(new ValueInt32(value)) {}
+Value::Value(int64_t value) : _impl(new ValueInt64(value)) {}
 Value::Value(double value) : _impl(new ValueDouble(value)) {}
 
 /**
@@ -88,7 +88,7 @@ static Value jsonToValue(struct json_object *obj)
         case json_type_null:    return nullptr;
         case json_type_boolean: return json_object_get_boolean(obj) != 0;
         case json_type_double:  return json_object_get_double(obj);
-        case json_type_int:     return json_object_get_int(obj);
+        case json_type_int:     return json_object_get_int64(obj);
         case json_type_string:  return Value(json_object_get_string(obj), json_object_get_string_len(obj));
         case json_type_array: {
             // Get the length of the array and create a vector of that length
@@ -187,7 +187,7 @@ Value& Value::operator=(bool value)
 /**
  *  Cast to a number
  */
-Value::operator int () const
+Value::operator int32_t () const
 {
     return *_impl;
 }
@@ -211,9 +211,9 @@ Value::operator double () const
 /**
  *  Assign a number
  */
-Value& Value::operator=(int value)
+Value& Value::operator=(int32_t value)
 {
-    _impl = ValueImplPtr(new ValueInt(value));
+    _impl = ValueImplPtr(new ValueInt32(value));
     return *this;
 }
 
@@ -222,7 +222,7 @@ Value& Value::operator=(int value)
  */
 Value& Value::operator=(int64_t value)
 {
-    _impl = ValueImplPtr(new ValueLong(value));
+    _impl = ValueImplPtr(new ValueInt64(value));
     return *this;
 }
 

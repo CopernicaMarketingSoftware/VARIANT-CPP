@@ -1,5 +1,5 @@
 /**
- *  ValueInt.h
+ *  ValueInt64.h
  *
  *  Value of numeric type
  *
@@ -9,8 +9,8 @@
 /**
  *  Include guard
  */
-#ifndef __COPERNICA_VARIANT_VALUEINT_H
-#define __COPERNICA_VARIANT_VALUEINT_H
+#ifndef __COPERNICA_VARIANT_VALUELONG_H
+#define __COPERNICA_VARIANT_VALUELONG_H
 
 #include "../include/ValueImpl.h"
 
@@ -22,20 +22,20 @@ namespace Variant {
 /**
  *  Numeric value implementation
  */
-class ValueInt : public ValueImpl
+class ValueInt64 : public ValueImpl
 {
 private:
     /**
      *  Value of this value
      */
-    int _value;
+    int64_t _value;
 public:
     /**
      *  Get the implementation type
      */
     virtual ValueType type() const override
     {
-        return ValueIntType;
+        return ValueInt64Type;
     }
 
     /**
@@ -43,15 +43,16 @@ public:
      */
     virtual ValueImpl* clone() const override
     {
-        return new ValueInt(_value);
+        return new ValueInt64(_value);
     }
 
     /**
-     *  Construct new integer value
+     *  Construct new long value
      *
      *  @param  value
      */
-    ValueInt(int value) : _value(value) {}
+    ValueInt64(int32_t value) : ValueInt64((int64_t) value) {}
+    ValueInt64(int64_t value) : _value(value) {}
 
     /**
      *  Convert the value to a boolean
@@ -64,7 +65,7 @@ public:
     /**
      *  Convert the value to a number
      */
-    virtual operator int () const override
+    virtual operator int32_t () const override
     {
         return _value;
     }
@@ -98,7 +99,7 @@ public:
      */
     virtual struct json_object *toJson() const override
     {
-        return json_object_new_int(_value);
+        return json_object_new_int64(_value);
     }
 
     /**
@@ -107,12 +108,12 @@ public:
     virtual bool operator==(const ValueImpl &that) const override
     {
         // Start off with checking if we are the same type
-        if (that.type() != ValueIntType) return false;
+        if (that.type() != ValueInt64Type) return false;
 
-        // Cast that to an int
-        int i = that;
+        // Cast that to a int64_t
+        int64_t i = that;
 
-        // Compare the two integers
+        // Compare the two longs
         return _value == i;
     }
 };
@@ -122,4 +123,4 @@ public:
  */
 }
 
-#endif /* ValueInt.h */
+#endif /* ValueLong.h */

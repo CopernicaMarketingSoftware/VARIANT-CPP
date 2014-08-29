@@ -13,7 +13,6 @@
 #define __COPERNICA_VARIANT_VALUENULL_H
 
 #include "../include/ValueImpl.h"
-#include <cstdlib>
 
 /**
  *  Set up namespace
