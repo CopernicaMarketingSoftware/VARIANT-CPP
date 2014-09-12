@@ -79,7 +79,14 @@ public:
     virtual operator bool () const override
     {
         // cast to a number and see whether this is false
-        return std::stod(_value);
+        try
+        {
+            return std::stod(_value);
+        }
+        catch (...)
+        {
+            return 0;
+        }
     }
 
     /**
