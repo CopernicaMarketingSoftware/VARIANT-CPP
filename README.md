@@ -80,4 +80,17 @@ To use the library, simply add '#include \<variant.h\>' on top of your C++
 source file. Be aware that this is a C++11 library, so C++11 support should
 be enabled.
 
+ABOUT
+=====
+
+VARIANT-CPP library is created and maintained by Copernica (www.copernica.com). 
+Do you appreciate our work and are you looking for other high quality solutions? 
+
+Then check out our other solutions:
+
+* PHP-CPP (www.php-cpp.com)
+* PHP-JS (www.php-js.com)
+* Copernica Marketing Suite (www.copernica.com)
+* MailerQ MTA (www.mailerq.com)
+* Responsive Email web service (www.responsiveemail.com)
 
